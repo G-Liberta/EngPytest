@@ -45,11 +45,12 @@ pip install -r requirements.txt
    
 ---
 ### Future Enhancements
-Add More Test Coverage: Expand test cases to cover more aspects of the website.
-Pipeline as Code: Integrated with Jenkins for Continuous Integration (CI) for better scalability.
-Browser Compatibility: Add support for other browsers such as Firefox or Edge.
-Integrate with Allure: For enhanced reporting.
-Run Tests in Parallel: Speed up test execution by running tests in parallel.
+-Add More Test Coverage: Expand test cases to cover more aspects of the website.
+-Pipeline as Code: Integrated with Jenkins for Continuous Integration (CI) for better scalability.
+-Browser Compatibility: Add support for other browsers such as Firefox or Edge.
+-Integrate with Allure: For enhanced reporting.
+-Run Tests in Parallel: Speed up test execution by running tests in parallel.
+
 ---
 
 
