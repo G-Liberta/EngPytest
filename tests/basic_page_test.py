@@ -18,7 +18,8 @@ def driver():
 
 
 def test_open_cookies(driver):
-    """Test case for opening the cookie customization and validating if the correct window is opened."""
+    """Test case for opening the cookie customization, validating if the correct window is opened
+    and then saving and closing the window"""
     basic_page = BasicPage(driver)
     basic_page.open_page(url)
     basic_page.open_cookies()  # Validate opening the cookie preferences

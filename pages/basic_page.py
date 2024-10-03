@@ -56,5 +56,11 @@ class BasicPage:
                 f"Expected 'Le tue preferenze relative alla privacy' but got '{view_more_header.text}'"
             print("Correct header displayed in the cookie preferences.")
 
+            save_and_continue_button = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[@id='iubFooterBtn']"))
+            )
+            save_and_continue_button.click()
+            print("Cookies customization saved.")
+
         except (TimeoutException, NoSuchElementException) as e:
             print(f"Open cookies failed: {e}")
