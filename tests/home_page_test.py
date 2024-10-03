@@ -33,7 +33,7 @@ def test_verify_logo(driver):
 
 
 def test_change_language(driver):
-    """Test case for changing the lange from Italian to English"""
+    """Test case for changing the language from Italian to English"""
     home_page = HomePage(driver)
     home_page.open_page(BASE_URL)
     home_page.accept_cookies()  # Accept cookies before proceeding
