@@ -2,9 +2,11 @@ from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
+import os
 
 
-class BasicPage:
+class HomePage:
     def __init__(self, driver):
         self.driver = driver
 
@@ -74,6 +76,8 @@ class BasicPage:
             assert logo.is_displayed(), "Logo is not displayed"
             print("Logo verification passed.")
             # Capture the screenshot of the element
-            logo.screenshot('logo_screenshot.png')
+            timestamp = time.strftime("%Y%m%d-%H%M%S")
+            screenshot_path = os.path.join('screenshots', f'logo_screenshot_{timestamp}.png')
+            logo.screenshot(screenshot_path)
         except AssertionError as e:
             print(e)
