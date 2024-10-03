@@ -64,3 +64,16 @@ class BasicPage:
 
         except (TimeoutException, NoSuchElementException) as e:
             print(f"Open cookies failed: {e}")
+
+    def eng_logo(self, timeout=10):
+        # Verify the logo is present
+        try:
+            logo = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, "//img[@class='logo']"))
+            )
+            assert logo.is_displayed(), "Logo is not displayed"
+            print("Logo verification passed.")
+            # Capture the screenshot of the element
+            logo.screenshot('logo_screenshot.png')
+        except AssertionError as e:
+            print(e)

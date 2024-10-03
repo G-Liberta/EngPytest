@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from pages.basic_page import BasicPage
+from pages.home_page import BasicPage
 
 # variables
 CHROME_DRIVER_PATH = 'C:\\Users\\CRS\\Downloads\\chromedriver-win64\\chromedriver.exe'
@@ -37,3 +37,11 @@ def test_refuse_cookies(driver):
     basic_page = BasicPage(driver)
     basic_page.open_page(url)
     basic_page.refuse_cookies()  # Validate refusing cookies
+
+
+def test_verify_logo(driver):
+    """Test case for verifying presence of logo and taking a screenshot."""
+    basic_page = BasicPage(driver)
+    basic_page.open_page(url)
+    basic_page.accept_cookies()  # Validate accepting cookies
+    basic_page.eng_logo()
