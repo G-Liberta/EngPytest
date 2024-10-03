@@ -67,6 +67,18 @@ class HomePage:
         except (TimeoutException, NoSuchElementException) as e:
             print(f"Open cookies failed: {e}")
 
+    def switch_language(self, timeout=10):
+        # Change language from Italian to English.
+        try:
+            language_option = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, "//div[@class='nav-item d-flex justify-content-between "
+                                                      "align-items-center']")
+                                           ))
+            language_option.click(),
+            print("Language changed.")
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"Refuse cookies failed: {e}")
+
     def eng_logo(self, timeout=10):
         # Verify the logo is present
         try:
@@ -81,3 +93,7 @@ class HomePage:
             logo.screenshot(screenshot_path)
         except AssertionError as e:
             print(e)
+
+    """Functions to test the links at the navigation bar"""
+
+

@@ -30,3 +30,11 @@ def test_verify_logo(driver):
     basic_page.open_page(BASE_URL)
     basic_page.accept_cookies()  # Validate accepting cookies
     basic_page.eng_logo()
+
+
+def test_change_language(driver):
+    """Test case for changing the lange from Italian to English"""
+    home_page = HomePage(driver)
+    home_page.open_page(BASE_URL)
+    home_page.accept_cookies()  # Accept cookies before proceeding
+    home_page.switch_language()
