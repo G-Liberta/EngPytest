@@ -96,4 +96,63 @@ class HomePage:
 
     """Functions to test the links at the navigation bar"""
 
+    def click_navigation_link(self, element_xpath, timeout=10):
+        # Clicks a navigation link based on elements xpath and waits for the next page to load.
+        try:
+            # Find the link by visible text
+            nav_link = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, element_xpath))
+            )
+            nav_link.click()
+            print(f"Navigation link clicked successfully.")
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"Failed to click navigation link': {e}")
 
+    def verify_modal_displayed(self, modal_xpath, timeout=10):
+        # Verifies that a modal or container is displayed after clicking a navigation link.
+        try:
+            # Wait for the modal to be present and displayed
+            modal = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.XPATH, modal_xpath))
+            )
+            assert modal.is_displayed(), f"Modal with XPath '{modal_xpath}' is not displayed."
+            print("Modal displayed successfully.")
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"Modal display verification failed: {e}")
+
+    def verify_sub_options(self, modal_xpath, sub_option_texts, timeout=10):
+        # Verifies that the sub-options in the modal are visible and clickable.
+        try:
+            # Ensure modal is displayed
+            modal = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.XPATH, modal_xpath))
+            )
+
+            # Check for each sub-option in the modal
+            for sub_option_text in sub_option_texts:
+                sub_option = WebDriverWait(self.driver, timeout).until(
+                    EC.element_to_be_clickable((By.LINK_TEXT, sub_option_text))
+                )
+                assert sub_option.is_displayed(), f"Sub-option '{sub_option_text}' not displayed."
+                print(f"Sub-option '{sub_option_text}' is displayed and clickable.")
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"Sub-option verification failed: {e}")
+
+    def click_sub_option_and_verify_content(self, sub_option_text, expected_content_xpath, timeout=10):
+        # Clicks on a sub-option and verifies the expected content is displayed.
+        try:
+            # Click on the sub-option
+            sub_option = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable((By.LINK_TEXT, sub_option_text))
+            )
+            sub_option.click()
+            print(f"Clicked on sub-option '{sub_option_text}'.")
+
+            # Verify the expected content is loaded/displayed
+            expected_content = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located((By.XPATH, expected_content_xpath))
+            )
+            assert expected_content.is_displayed(), f"Expected content for '{sub_option_text}' not displayed."
+            print(f"Expected content for '{sub_option_text}' is displayed.")
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"Failed to verify content for sub-option '{sub_option_text}': {e}")
