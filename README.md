@@ -53,13 +53,4 @@ pip install -r requirements.txt
 
 ---
 
-
-### **Explanation of Key Sections**:
-
-- **Project Structure**: Gives an overview of the file and folder layout.
-- **Requirements**: Lists the software and dependencies needed to run the tests.
-- **Future Enhancements**: Lists potential improvements to the testing and CI setup.
-
----
-
 Would you like any specific sections modified or expanded? :)
